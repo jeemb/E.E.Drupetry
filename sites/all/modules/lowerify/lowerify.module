@@ -1,0 +1,44 @@
+ <?php
+
+function lowerify_menu() {
+  $items = array();
+  $items['lowerify'] = array(
+    'title' => 'Lowercase This',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('poem_form'),
+    'access callback' => TRUE,
+    'type' => MENU_NORMAL_ITEM,
+  );
+  return $items;
+}
+
+function poem_form() {
+  $form['poem_title'] = array(
+    '#title' => t('poem title'),
+    '#type' => 'textfield',
+    '#description' => t('enter the title of your poem'),
+    '#required' => TRUE,
+  );
+
+  $form['poem_body'] = array(
+    '#title' => t('poem body'),
+    '#type' => 'textarea',
+    '#description' => t('enter the body of your poem'),
+    '#required' => TRUE,
+  );
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => 'lowerify this',
+  );
+  return $form;
+}
+
+function poem_form_submit($form, &$form_state) {
+  $body_to_lower = $form_state['values']['poem_body'];
+  $title_to_lower = $form_state['values']['poem_title'];
+  $body_to_lower = strtolower($body_to_lower);
+  $title_to_lower = strtolower($title_to_lower);
+  drupal_set_message($title_to_lower.'<br>'.$body_to_lower);
+  return $body_to_lower;
+}
