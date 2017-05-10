@@ -9,6 +9,12 @@ function lowerify_menu() {
     'access callback' => TRUE,
     'type' => MENU_NORMAL_ITEM,
   );
+  $items['lower_success_page'] = array(
+    'title' => 'this poem is a masterpiece now',
+    'page callback' => 'lower_success',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
   return $items;
 }
 
@@ -31,14 +37,26 @@ function poem_form() {
     '#type' => 'submit',
     '#value' => 'lowerify this',
   );
+
   return $form;
 }
 
 function poem_form_submit($form, &$form_state) {
+  $lowered_string = "";
+
   $body_to_lower = $form_state['values']['poem_body'];
   $title_to_lower = $form_state['values']['poem_title'];
+
   $body_to_lower = strtolower($body_to_lower);
   $title_to_lower = strtolower($title_to_lower);
-  drupal_set_message($title_to_lower.'<br>'.$body_to_lower);
-  return $body_to_lower;
+
+  $lowered_string = $title_to_lower.'<br>'.$body_to_lower;
+
+  $_SESSION['lowered'] = $lowered_string;
+  $form_state['redirect'] = 'lower_success_page';
+}
+
+function lower_success() {
+  $lowered_poem = $_SESSION['lowered'];
+  return $lowered_poem;
 }
