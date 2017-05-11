@@ -1,0 +1,26 @@
+<?php
+/**
+ * @file
+ * Tests for the Bakery User module.
+ */
+ class LowerifyTests extends DrupalWebTestCase {
+
+   public static function getInfo() {
+     return array(
+       'name' => 'Lowerify User Tests',
+       'description' => 'Tests for the custom Lowerify module.',
+       'group' => 'EEDrummings Tests',
+     );
+   }
+
+   public function setUp() {
+     parent::setUp(array('lowerify'));
+   }
+
+   public function testSuccessNavigation() {
+     //Navigate to the correct Success Page URL.
+     $this->drupalGet('nah_success');
+     //Check that the text we want to see on the Success page is correct.
+     $this->assertText(t('way to be dramatic...with those capitalized words...'), 'The text on the page is correct.');
+   }
+ }

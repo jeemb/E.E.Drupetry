@@ -4,3 +4,4 @@ package = EEDrumming
 core = 7.x
 files[] = lowerify.module
 files[] = lowerify.test
+dependencies[] = simpletest

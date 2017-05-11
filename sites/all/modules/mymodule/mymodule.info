@@ -1,0 +1,5 @@
+name = My Ajax Node Loader Epi Test
+description = Display Poems with AJAX.
+package = EEDrummings
+core = 7.x
+files[] = mymodule.module
