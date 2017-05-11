@@ -19,7 +19,7 @@
 
    public function testSuccessNavigation() {
      //Navigate to the correct Success Page URL.
-     $this->drupalGet('nah_success');
+     $this->drupalGet('nah_page');
      //Check that the text we want to see on the Success page is correct.
      $this->assertText(t('way to be dramatic...with those capitalized words...'), 'The text on the page is correct.');
    }
