@@ -54,13 +54,18 @@ function poem_form() {
   return $form;
 }
 
+function lowercase_everything($input) {
+  $input = strtolower($input);
+  return $input;
+}
+
 function lowerify_confirm_poem_submit($form, &$form_state) {
   $lowered_string = "";
   $body_to_lower = $form_state['values']['poem_body'];
   $title_to_lower = $form_state['values']['poem_title'];
 
-  $body_to_lower = strtolower($body_to_lower);
-  $title_to_lower = strtolower($title_to_lower);
+  $body_to_lower = lowercase_everything($body_to_lower);
+  $title_to_lower = lowercase_everything($title_to_lower);
 
   $lowered_string = $title_to_lower.'<br>'.$body_to_lower;
 

@@ -3,5 +3,6 @@ description = Make ee cummings proud and make all letters lowercase.
 package = EEDrumming
 core = 7.x
 files[] = lowerify.module
-files[] = lowerify.test
+files[] = lowerify_functional.test
+files[] = lowerify_unit.test
 dependencies[] = simpletest

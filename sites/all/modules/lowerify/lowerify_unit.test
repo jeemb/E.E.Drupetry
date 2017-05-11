@@ -1,0 +1,25 @@
+<?php
+
+
+ class LowerifyTestCase extends DrupalUnitTestCase
+ {
+
+   public static function getInfo()
+   {
+       return array(
+       'name' => 'Lowerify Unit Tests',
+       'description' => 'Test that my strtolower converter works properly.',
+       'group' => 'EEDrummings Tests',
+       );
+   }
+
+   function test_lowercase_everything()
+   {
+     $description = 'A string has been converted to all lowercase letters.';
+     $test_input = 'THIS IS A TEST!';
+     $test_output = lowercase_everything($test_input);
+
+     $expected_result = 'this is a test!';
+     $this->assertEqual($test_output, $expected_result, $description);
+   }
+ }
